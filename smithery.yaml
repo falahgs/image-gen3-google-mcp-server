@@ -1,42 +1,17 @@
-name: gemini-imagen-mcp-server
-version: 1.0.0
-description: MCP server for Google's Imagen 3.0 model via Gemini API
-
-build:
-  dockerfile: Dockerfile
-  context: .
-
+# Smithery.ai configuration
 startCommand:
-  command: node
-  args: ["build/index.js"]
-
-env:
-  GEMINI_API_KEY: ""
-
-volumes:
-  images:
-    path: /app/images
-    description: Directory for storing generated images
-
-health:
-  type: command
-  command: node -e "process.exit(0)"
-  interval: 30s
-  timeout: 10s
-  retries: 3
-
-resources:
-  limits:
-    memory: 512Mi
-    cpu: 500m
-
-metadata:
-  author: Falah G. Salieh
-  license: MIT
-  repository: https://github.com/falahgs/gemini-imagen-mcp-server
-  keywords:
-    - mcp
-    - gemini
-    - imagen
-    - ai
-    - image-generation 
+type: stdio
+configSchema:
+  # JSON Schema defining the configuration options for the MCP.
+  {}
+commandFunction:
+  # A function that produces the CLI command to start the MCP on stdio.
+  |-
+  (config) => ({
+    "command": "node",
+    "args":build/index.js"
+    ],
+    "env": {
+      ...
+    }
+  })
