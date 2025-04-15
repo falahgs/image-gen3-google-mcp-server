@@ -6,12 +6,12 @@ build:
   dockerfile: Dockerfile
   context: .
 
-startCommand: node build/index.js
+startCommand:
+  command: node
+  args: ["build/index.js"]
 
 env:
-  GEMINI_API_KEY:
-    required: true
-    description: Google Gemini API key for authentication
+  GEMINI_API_KEY: ""
 
 volumes:
   images:
