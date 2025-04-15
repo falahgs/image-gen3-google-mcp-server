@@ -6,15 +6,15 @@ build:
   dockerfile: Dockerfile
   context: .
 
+startCommand: node build/index.js
+
 env:
-  - name: GEMINI_API_KEY
+  GEMINI_API_KEY:
     required: true
     description: Google Gemini API key for authentication
 
-ports: []  # No ports needed as this is an MCP server
-
 volumes:
-  - name: images
+  images:
     path: /app/images
     description: Directory for storing generated images
 
@@ -34,7 +34,7 @@ metadata:
   author: Falah G. Salieh
   license: MIT
   repository: https://github.com/falahgs/gemini-imagen-mcp-server
-  tags:
+  keywords:
     - mcp
     - gemini
     - imagen
