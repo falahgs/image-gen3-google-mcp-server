@@ -138,7 +138,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       };
     } catch (error) {
-      throw new McpError(2, `Failed to generate images: ${error.message}`);
+      const errMsg = error instanceof Error ? error.message : String(error);
+      throw new McpError(2, `Failed to generate images: ${errMsg}`);
     }
   }
 
@@ -163,7 +164,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       };
     } catch (error) {
-      throw new McpError(2, `Failed to create HTML: ${error.message}`);
+      const errMsg = error instanceof Error ? error.message : String(error);
+      throw new McpError(2, `Failed to create HTML: ${errMsg}`);
     }
   }
   
